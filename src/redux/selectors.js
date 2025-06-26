@@ -2,5 +2,6 @@
 export const selectTodos = (state) =>
   state.todos.filter((todo) => !todo.completed);
 // Sélectionne uniquement les tâches terminées
-export const selectCompletedTodos = (state) =>
-  state.todos.filter((todo) => todo.completed);
+export const selectCompletedTodos = createSelector([selectTodos], (todos) =>
+  todos.filter((todo) => todo.completed)
+);
